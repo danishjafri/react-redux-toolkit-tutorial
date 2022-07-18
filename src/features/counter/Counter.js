@@ -5,13 +5,16 @@ import { useState } from "react";
 const Counter = () => {
     const count = useSelector((state) => state.counter.count);
     const [incrementAmount, setIncrementAmount] = useState(0);
+
     const addValue = Number(incrementAmount) || 0; // this will prevent NaN values
+
+    const dispatch = useDispatch();
+
     const resetAll = () => {
         setIncrementAmount(0);
         dispatch(reset());
     }
 
-    const dispatch = useDispatch();
     return (
         <section>
             <p>{count}</p>
